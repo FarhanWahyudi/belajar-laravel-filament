@@ -30,9 +30,15 @@ class FakturResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('kode_faktur'),
-                DatePicker::make('tanggal_faktur'),
-                TextInput::make('kode_customer'),
+                TextInput::make('kode_faktur')
+                    ->columnSpan(1),
+                DatePicker::make('tanggal_faktur')
+                    ->columnSpan([
+                        'sm' => 1,
+                        'md' => 2
+                    ]),
+                TextInput::make('kode_customer')
+                    ->columnSpan(1),
                 Select::make('customer_id')
                     ->relationship('customer', 'nama_customer'),
                 TextInput::make('ket_faktur'),
@@ -56,6 +62,10 @@ class FakturResource extends Resource
                             ->numeric(),
                         TextInput::make('hasil_qty')
                             ->numeric(),
+                    ])->columnSpan([
+                        'default' => 1,
+                        'md' => 2,
+                        'lg' => 3
                     ])
             ]);
     }
