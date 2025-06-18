@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Customer extends Model
 {
@@ -12,4 +13,9 @@ class Customer extends Model
         'alamat_customer',
         'telepon_customer',
     ];
+
+    public function fakturs(): HasMany
+    {
+        return $this->hasMany(Faktur::class);
+    }
 }
