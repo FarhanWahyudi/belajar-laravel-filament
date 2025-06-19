@@ -64,11 +64,14 @@ class PenjualanResource extends Resource
                     ->formatStateUsing(fn (Penjualan $record): string => $record->status == 0 ? 'Belum Lunas' : 'Lunas')
                     ->label('Status'),
             ])
+            ->emptyStateHeading('Tidak Ada Data Penjualan')
+            ->emptyStateDescription('Sliahkan Buat Faktur Terlebih Dahulu')
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
